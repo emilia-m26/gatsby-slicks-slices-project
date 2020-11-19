@@ -5,6 +5,9 @@ import 'normalize.css'; //package from package.json
 import GlobalStyles from '../styles/GlobalStyles';
 import Typography from '../styles/Typography';
 
+const ContentStyles = styled.div`
+    
+`;
 
 export default function Layout({ children }) {
  return (
