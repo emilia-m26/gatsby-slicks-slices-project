@@ -1,10 +1,14 @@
 import React from 'react';
 import { Link } from 'gatsby';
 import styled from 'styled-components';
+import Logo from './Logo';
 
 //only will apply to this component - scoped styles
 const NavStyles = styled.nav`
     margin-bottom: 3rem;
+    .logo {
+        transform: translateY(-25%);
+    }
     ul {
         margin: 0;
         padding: 0;
@@ -12,7 +16,7 @@ const NavStyles = styled.nav`
         grid-template-columns: 1fr 1fr auto 1fr 1fr;
         grid-gap: 2rem;
         align-items: center;
-        text-line: center;
+        text-align: center;
         list-style: none;
     }
     li {
@@ -48,7 +52,7 @@ export default function Nav() {
             <ul>
                 <li><Link to="/">Hot Now</Link></li>
                 <li><Link to="/pizzas/">Pizza Menu</Link></li>
-                <li><Link to="/">LOGO</Link></li>
+                <li><Link to="/"><Logo /></Link></li>
                 <li><Link to="/slicemasters">SliceMasters</Link></li>
                 <li><Link to="/order">Order Ahead</Link></li>
             </ul>
