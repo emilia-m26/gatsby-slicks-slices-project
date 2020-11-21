@@ -1,3 +1,5 @@
+import { MdLocalPizza as icon } from 'react-icons/md';
+
 export default {
     //computer name
     name: 'pizza',
@@ -5,7 +7,7 @@ export default {
     title: 'Pizzas',
     type: 'document',
     //can give icon any React comp
-    icon: () => '🍕', 
+    icon: icon, 
     fields: [
         {
             name: 'name',
