@@ -4,6 +4,8 @@ export default {
     //visible title
     title: 'Pizzas',
     type: 'document',
+    //can give icon any React comp
+    icon: () => '🍕', 
     fields: [
         {
             name: 'name',
