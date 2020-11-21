@@ -24,5 +24,14 @@ export default {
                 layout: 'checkbox',
             }
         },
-    ]
+    ],
+    preview: {
+        select: {
+            name: 'name',
+            vegetarian: 'vegetarian',
+        },
+        prepare: (fields) => ({
+            title: `${fields.name} ${fields.vegetarian ? '🌱' : '' }`,
+        })
+    }
 };
