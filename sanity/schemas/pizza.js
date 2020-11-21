@@ -40,5 +40,12 @@ export default {
             validation: Rule => Rule.min(1000),
             //TODO - add custom component
         },
+        //relational content - one to many
+        {
+            name: 'toppings',
+            title: 'Toppings',
+            type: 'array',
+            of: [{ type: 'reference', to: [{type: 'topping'}]}],
+        }
     ]
 };
