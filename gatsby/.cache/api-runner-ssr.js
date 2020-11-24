@@ -1,4 +1,10 @@
 var plugins = [{
+      plugin: require('/Users/emiliamena/Documents/coding/gatsby-slicks-slices-project/gatsby/node_modules/gatsby-plugin-styled-components/gatsby-ssr'),
+      options: {"plugins":[]},
+    },{
+      plugin: require('/Users/emiliamena/Documents/coding/gatsby-slicks-slices-project/gatsby/node_modules/gatsby-source-sanity/gatsby-ssr'),
+      options: {"plugins":[],"projectId":"qvdizzvy","dataset":"production","watchMode":true,"token":"skkYvNePNnE93TFJD0wGHhTGgyVzP96veXvV9X7YSbe9Ct3nmCWFzSJ11iKc41CQmmYO4Ng0oPl3uCVNWIYDrVVguIa5d8RPnuA6TQV7M1T7RpthxEunzDoI1B4vg8UvZlFwqWOKlp7ojqkBKCZIuUnO7G5dYQLf00lbzxGX5K8Z53EsBb5B"},
+    },{
       plugin: require('/Users/emiliamena/Documents/coding/gatsby-slicks-slices-project/gatsby/gatsby-ssr'),
       options: {"plugins":[]},
     }]
