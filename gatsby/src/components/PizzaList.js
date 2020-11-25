@@ -1,10 +1,10 @@
 import React from 'react';
 
-
-export default function PizzaList() {
+//destructuring prop
+export default function PizzaList({ pizzas }) {
     return (
         <p>
-           List of Pizzas 
+           There are {pizzas.length} pizzas!
         </p>
     )
 }
