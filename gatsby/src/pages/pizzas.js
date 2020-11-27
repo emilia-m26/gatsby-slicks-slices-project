@@ -16,8 +16,16 @@ export default function PizzasPage({ data }) {
 
 //specify page query - gatsby will grab data and pass it to page comp
 export const query = graphql`
-    query PizzaQuery {
-        pizzas: allSanityPizza {
+    query PizzaQuery($topping: [String]) {
+        pizzas: allSanityPizza(filter: {
+            toppings: {
+                elemMatch: {
+                    name: {
+                       in: $topping
+                    }
+                }
+            }
+        }) {
             nodes {
                 id
                 name
