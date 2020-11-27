@@ -1,6 +1,11 @@
 import React from 'react';
 import {useStaticQuery, graphql} from 'gatsby';
 import { Link } from 'gatsby';
+import styled from 'styled-components';
+
+const ToppingsStyles = styled.div`
+
+`;
 
 function countPizzasInToppings(pizzas) {
     //return pizzas with counts
