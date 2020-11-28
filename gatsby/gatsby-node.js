@@ -96,7 +96,40 @@ export async function sourceNodes(params) {
 }
 
 async function turnSlicemastersIntoPages({graphql, actions}) {
-
+    //query all slicemasters
+    const { data } = await graphql(`
+        query {
+            slicemasters: allSanityPerson {
+                totalCount
+                nodes {
+                    name
+                    id
+                    slug {
+                        current
+                    }
+                }
+            }
+        }
+    `)
+    //turn each into their own page
+    //figure out how many pages based on slicemasters count, and how many per page
+    const pageSize = parseInt(process.env.GATSBY_PAGE_SIZE);
+    const pageCount= Math.ceil(data.slicemasters.totalCount / pageSize);
+    console.log(`there are ${data.slicemasters.totalCount} total people and we have ${pageCount} pages with ${pageSize} per page`)
+    //loop over
+    Array.from({ length: pageCount }).forEach((_, i) =>{
+        console.log(`creating page ${i}`);
+        actions.createPage({
+            path: `/slicemasters/${i+1}`,
+            component: path.resolve('./src/pages/slicemasters.js'),
+            context: {
+            //passed to template
+                skip: i * pageSize,
+                currentPage: i+1,
+                pageSize
+            }
+        })
+    })
 }
 
 export async function createPages(params){
