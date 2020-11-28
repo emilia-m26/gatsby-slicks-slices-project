@@ -95,6 +95,10 @@ export async function sourceNodes(params) {
     ])
 }
 
+async function turnSlicemastersIntoPages({graphql, actions}) {
+
+}
+
 export async function createPages(params){
     //create pages dynamically
     //wait for all promises to be resolved before finishing this function
@@ -102,7 +106,8 @@ export async function createPages(params){
         //pizzas
     turnPizzasIntoPages(params),
     //toppings
-    turnToppingsIntoPages(params)
-    ]);
-    //slicemasters
+    turnToppingsIntoPages(params),
+     //slicemasters
+     turnSlicemastersIntoPages(params)
+    ]); 
 }
