@@ -1,4 +1,4 @@
-import path from 'path';
+import path, { resolve } from 'path';
 import fetch from 'isomorphic-fetch';
 
 async function turnPizzasIntoPages({ graphql, actions }) {
@@ -48,7 +48,7 @@ async function turnToppingsIntoPages({ graphql, actions }) {
     `);
     //loop over data and create page for that topping
        data.toppings.nodes.forEach((topping) => {
-        console.log(`Creating page for topping`, topping.name);
+        //console.log(`Creating page for topping`, topping.name);
         actions.createPage({
             path: `topping/${topping.name}`,
             component: toppingTemplate,
@@ -111,14 +111,24 @@ async function turnSlicemastersIntoPages({graphql, actions}) {
             }
         }
     `)
-    //turn each into their own page
+    //turn each slicemaster into their own page
+        data.slicemasters.nodes.forEach((slicemaster) => {
+            actions.createPage({
+                component: path.resolve('./src/templates/Slicemaster.js'),
+                path: `/slicemaster/${slicemaster.slug.current}`,
+                context: {
+                 name: slicemaster.person,
+                 slug: slicemaster.slug.current,   
+                }
+            })
+        })
     //figure out how many pages based on slicemasters count, and how many per page
     const pageSize = parseInt(process.env.GATSBY_PAGE_SIZE);
     const pageCount= Math.ceil(data.slicemasters.totalCount / pageSize);
-    console.log(`there are ${data.slicemasters.totalCount} total people and we have ${pageCount} pages with ${pageSize} per page`)
+    //console.log(`there are ${data.slicemasters.totalCount} total people and we have ${pageCount} pages with ${pageSize} per page`)
     //loop over
     Array.from({ length: pageCount }).forEach((_, i) =>{
-        console.log(`creating page ${i}`);
+       // console.log(`creating page ${i}`);
         actions.createPage({
             path: `/slicemasters/${i+1}`,
             component: path.resolve('./src/pages/slicemasters.js'),
