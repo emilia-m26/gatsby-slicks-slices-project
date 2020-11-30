@@ -1,6 +1,7 @@
 import React from 'react';
 import SEO from "../components/SEO";
 import useForm from '../utils/useForm'; //custom hook
+import { graphql } from 'gatsby';
 
 export default function OrderPage() {
     const { values, updateValue } = useForm({
@@ -28,3 +29,25 @@ export default function OrderPage() {
         </>
     );
 }
+
+export const query = graphql`
+    query {
+        pizzas: allSanityPizza {
+            nodes {
+                id
+                name
+                slug {
+                    current
+                }
+                price
+                image{
+                    asset {
+                        fluid(maxWidth: 100) {
+                            ...GatsbySanityImageFluid
+                        }
+                    }
+                }
+            }
+        }
+    }
+`;
