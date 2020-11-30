@@ -10,6 +10,7 @@ export default {
         description: `The best pizza place in town`,
     },
     plugins: [
+      'gatsbt-plugin-react-helmet',
       'gatsby-plugin-styled-components',
       {
           //name of plugin you are adding
