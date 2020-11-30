@@ -16,7 +16,7 @@ export default function OrderPage() {
                     <label htmlFor="name">Name</label>
                     <input type="text" name="name" value={values.name} onChange={updateValue}/>
                     <label htmlFor="email">Email</label>
-                    <input type="email" name="email" />
+                    <input type="email" name="email" value={values.email} onChange={updateValue} />
                 </fieldset>
                 <fieldset>
                     <legend>Menu</legend>
