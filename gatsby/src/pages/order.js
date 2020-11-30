@@ -3,6 +3,8 @@ import SEO from "../components/SEO";
 import useForm from '../utils/useForm'; //custom hook
 import { graphql } from 'gatsby';
 import Img from 'gatsby-image';
+import calculatePizzaPrice from '../utils/calculatePizzaPrice';
+import formatMoney from '../utils/formatMoney';
 
 export default function OrderPage({ data }) {
     const { values, updateValue } = useForm({
@@ -32,7 +34,7 @@ export default function OrderPage({ data }) {
                             </div>
                             <div>
                             {['S', 'M', 'L'].map(size => (
-                                <button type="button">{size}</button>
+                                <button type="button">{size} {formatMoney(calculatePizzaPrice(pizza.price, size))}</button>
                             ))}
                             </div>
                         </div>
