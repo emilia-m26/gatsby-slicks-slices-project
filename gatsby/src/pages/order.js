@@ -2,12 +2,15 @@ import React from 'react';
 import SEO from "../components/SEO";
 import useForm from '../utils/useForm'; //custom hook
 import { graphql } from 'gatsby';
+import Img from 'gatsby-image';
 
-export default function OrderPage() {
+export default function OrderPage({ data }) {
     const { values, updateValue } = useForm({
         name: '',
         email: ''
     });
+    const pizzas = data.pizzas.nodes;
+
     return ( 
         <>
         <SEO title="Order a Pizza!" />
@@ -21,6 +24,19 @@ export default function OrderPage() {
                 </fieldset>
                 <fieldset>
                     <legend>Menu</legend>
+                    {pizzas.map(pizza => (
+                        <div key={pizza.id}>
+                            <Img width="50" height="50" fluid={pizza.image.asset.fluid} alt={pizza.name}/>
+                            <div>
+                                <h2>{pizza.name}</h2>
+                            </div>
+                            <div>
+                            {['S', 'M', 'L'].map(size => (
+                                <button type="button">{size}</button>
+                            ))}
+                            </div>
+                        </div>
+                    ))}
                 </fieldset>
                 <fieldset>
                     <legend>Order</legend>
