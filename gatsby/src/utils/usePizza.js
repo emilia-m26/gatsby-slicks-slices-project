@@ -17,7 +17,11 @@ export default function usePizza({pizzas, inputs}) {
         ]);
     }
     //send data to serverless function when checking out
+    
+    //return all functionality that this custom hook needs to surface for who is using hook
     return {
-        
-    }
+        order,
+        addToOrder,
+        removeFromOrder
+    };
 }
