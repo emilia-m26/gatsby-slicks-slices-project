@@ -18,7 +18,7 @@ export default function PizzaOrder({ order, pizzas, removeFromOrder }){
                 <h2>{pizza.name}</h2>
                 <p>
                     {formatMoney(calculatePizzaPrice(pizza.price, singleOrder.size))}
-                    <button type="button" className="remove" title={`Remove ${singleOrder.size} ${pizza.name} from Order`}>&times;</button>
+                    <button type="button" className="remove" title={`Remove ${singleOrder.size} ${pizza.name} from Order`} onClick={() => removeFromOrder(index)}>&times;</button>
                 </p>
                 </MenuItemStyles>
             )
