@@ -1,9 +1,16 @@
 import React from 'react';
+import MenuItemStyles from '../styles/MenuItemStyles';
 
-export default function PizzaOrder({ order, pizzas, removeFromOrder, plainImage}) {
+export default function PizzaOrder({ order, pizzas, removeFromOrder }){
     return (
         <>
-            <p>ORDER</p>
+        {order.map((singleOrder, Index) =>{
+            return (
+                <MenuItemStyles>
+                {singleOrder.id}
+                </MenuItemStyles>
+            )
+        })}
         </>
     )
 }
