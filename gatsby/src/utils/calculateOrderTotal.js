@@ -9,6 +9,4 @@ export default function calculateOrderTotal(order, pizzas) {
         return runningTotal + calculatePizzaPrice(pizza.price, singleOrder.size);
     }, 0);
     return formatMoney(total);
-    
-    
 }
