@@ -54,6 +54,10 @@ export default function OrderPage({ data }) {
                     <legend>Order</legend>
                     <PizzaOrder order={order} removeFromOrder={removeFromOrder} pizzas={pizzas}/>
                 </fieldset>
+                <fieldset>
+                    <h3>Your total is {calculateOrderTotal(order, pizzas)} </h3>
+                    <button type="submit">Order Ahead</button>
+                </fieldset>
             </OrderStyles>
         </>
     );
