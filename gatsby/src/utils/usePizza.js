@@ -1,7 +1,8 @@
 import { useState, useContext } from 'react';
 import OrderContext from '../components/OrderContext';
+import calculateOrderTotal from './calculateOrderTotal';
 
-export default function usePizza({pizzas, inputs}) {
+export default function usePizza({pizzas, values}) {
     //create state to hold order
     //const [order, setOrder] = useState([]); -- moved this state to provider
     const [order, setOrder] = useContext(OrderContext);
@@ -26,8 +27,16 @@ export default function usePizza({pizzas, inputs}) {
     //function run when form submitted
     async function submitOrder(event) {
         event.preventDefault();
-        console.log(event)
-        setLoading(true)
+        
+        setLoading(true);
+        //gather all data to be sent
+        const body = {
+            order: order,
+            total: calculateOrderTotal(order, pizzas),
+            name: values.name,
+            email: values.email,
+        }
+        console.log(body);
     }
     //send data to serverless function when checking out
     
