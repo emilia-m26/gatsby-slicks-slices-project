@@ -39,5 +39,6 @@ export default function usePizza({pizzas, inputs}) {
         error,
         loading,
         message,
+        submitOrder,
     };
 }

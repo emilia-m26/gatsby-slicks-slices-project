@@ -19,12 +19,12 @@ export default function OrderPage({ data }) {
         email: ''
     });
     //custom hook for order page
-    const { order, addToOrder, removeFromOrder, error, loading, message } = usePizza({ pizzas, inputs: values });
+    const { order, addToOrder, removeFromOrder, error, loading, message, submitOrder } = usePizza({ pizzas, inputs: values });
 
     return ( 
         <>
         <SEO title="Order a Pizza!" />
-            <OrderStyles>
+            <OrderStyles onSubmit={submitOrder}>
                 <fieldset>
                     <legend>Your Info</legend>
                     <label htmlFor="name">Name</label>
