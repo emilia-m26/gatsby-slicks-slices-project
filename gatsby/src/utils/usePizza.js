@@ -5,6 +5,11 @@ export default function usePizza({pizzas, inputs}) {
     //create state to hold order
     //const [order, setOrder] = useState([]); -- moved this state to provider
     const [order, setOrder] = useContext(OrderContext);
+    //need new pieces of state, handling errors, loading and returned messages
+    const [error, setError] = useState();
+    const [loading, setLoading] = useState(false);
+    const [message, setMessage] = useState('');
+
     //make function to add things to order
     function addToOrder(orderedPizza) {
         setOrder([...order, orderedPizza]);
@@ -24,6 +29,9 @@ export default function usePizza({pizzas, inputs}) {
     return {
         order,
         addToOrder,
-        removeFromOrder
+        removeFromOrder,
+        error,
+        loading,
+        message,
     };
 }
