@@ -40,14 +40,19 @@ export default function usePizza({pizzas, values}) {
             email: values.email,
         };
          //send data to serverless function when checking out
-    const res = await fetch(`${process.env.GATSBY_SERVERLESS_BASE}/placeOrder`, {
+         console.log(process.env.GATSBY_SERVERLESS_BASE);
+         
+    const res = await fetch(`${process.env.GATSBY_SERVERLESS_BASE}/placeOrder`, 
+    {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
         },
         body: JSON.stringify(body),
     });
     const text = JSON.parse(await res.text());
+    //const text = await res.text();
+    console.log(text)
     //check if everything worked
     if(res.status >= 400 && res.status < 600) {
         setLoading(false); //turn off loading
