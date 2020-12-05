@@ -12,9 +12,14 @@ function generateOrderEmail({ order, total}) {
             <img src="${item.thumbnail}" alt="${item.name}" />
             ${item.size} ${item.name} - ${item.price}
             </li>
-        `)}
+        `).join('')}
         </ul>
-        <p>Your total is $${total} due at pickup.</p>
+        <p>Your total is <strong>${total}</strong> due at pickup.</p>
+        <style>
+            ul {
+                list-style: none;
+            }
+        </style>
         </div>
     `;
 }
@@ -47,19 +52,17 @@ for(const field of requiredFields) {
     }
 }
 
-//send email
-
 //send success or error message
 
-//test send an email
+//send an email
     const info = await transporter.sendMail({
         from: "Slick's Slices <slick@example.com>",
-        to: "orders@example.com",
+        to: `${body.name} <${body.email}>, order@example.com `,
         subject: "New Order!",
-        html: `<p>Your new pizza order is here</p>`
+        html: generateOrderEmail({ order: body.order, total: body.total})
     });
     return {
         statusCode: 200,
-        body: JSON.stringify(info)
+        body: JSON.stringify({message: 'Success'})
     }
 }
