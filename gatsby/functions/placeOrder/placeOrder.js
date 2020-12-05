@@ -48,6 +48,7 @@ exports.handler = async (event, context) => {
 //validate data coming in is correct
 const requiredFields = ['email', 'name', 'order'];
 
+//send success or error message
 for(const field of requiredFields) {
     console.log(`Checking that ${field} is good`);
     if(!body[field]) {
@@ -58,7 +59,14 @@ for(const field of requiredFields) {
     }
 }
 
-//send success or error message
+//make sure they actually have items in order
+if(!body.order.length) {
+    return {
+        statusCode: 400,
+        body: JSON.stringify({message: `Why would you order nothing?!`})
+    }
+}
+ 
 
 //send an email
     const info = await transporter.sendMail({
