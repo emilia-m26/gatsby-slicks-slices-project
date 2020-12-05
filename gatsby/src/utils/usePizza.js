@@ -23,6 +23,12 @@ export default function usePizza({pizzas, inputs}) {
             ...order.slice(index + 1) //omit 2nd arg - goes to end
         ]);
     }
+    //function run when form submitted
+    async function submitOrder(event) {
+        event.preventDefault();
+        console.log(event)
+        setLoading(true)
+    }
     //send data to serverless function when checking out
     
     //return all functionality that this custom hook needs to surface for who is using hook
