@@ -30,16 +30,35 @@ export default function usePizza({pizzas, values}) {
         event.preventDefault();
         
         setLoading(true);
+        setError(null);
+        setMessage(null);
         //gather all data to be sent
         const body = {
             order: attachNamesAndPrices(order, pizzas),
             total: calculateOrderTotal(order, pizzas),
             name: values.name,
             email: values.email,
-        }
-        console.log(body);
+        };
+         //send data to serverless function when checking out
+    const res = await fetch(`${process.env.GATSBY_SERVERLESS_BASE}/placeOrder`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(body),
+    });
+    const text = JSON.parse(await res.text());
+    //check if everything worked
+    if(res.status >= 400 && res.status < 600) {
+        setLoading(false); //turn off loading
+        setError(text.message); //sent from our server side
+    } else {
+        //it worked
+        setLoading(false);
+        setMessage('Success! Come on down for your pizza.');
     }
-    //send data to serverless function when checking out
+}
+   
     
     //return all functionality that this custom hook needs to surface for who is using hook
     return {

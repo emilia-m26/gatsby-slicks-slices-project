@@ -21,6 +21,12 @@ export default function OrderPage({ data }) {
     //custom hook for order page
     const { order, addToOrder, removeFromOrder, error, loading, message, submitOrder } = usePizza({ pizzas, values: values });
 
+    if(message) {
+        return (
+        <p>{message}</p>
+        )
+    }
+
     return ( 
         <>
         <SEO title="Order a Pizza!" />
@@ -57,6 +63,7 @@ export default function OrderPage({ data }) {
                 </fieldset>
                 <fieldset>
                     <h3>Your total is {calculateOrderTotal(order, pizzas)} </h3>
+                            <div>{error ? <p>Error: {error}</p> : ''}</div>
                             <button type="submit" disabled={loading}>{loading ? 'Placing Order...' : 'Order Ahead'}</button>
                 </fieldset>
             </OrderStyles>
