@@ -19,7 +19,7 @@ export default function OrderPage({ data }) {
         email: ''
     });
     //custom hook for order page
-    const { order, addToOrder, removeFromOrder } = usePizza({ pizzas, inputs: values });
+    const { order, addToOrder, removeFromOrder, error, loading, message } = usePizza({ pizzas, inputs: values });
 
     return ( 
         <>
