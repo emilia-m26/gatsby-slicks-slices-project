@@ -38,6 +38,7 @@ export default function usePizza({pizzas, values}) {
             total: calculateOrderTotal(order, pizzas),
             name: values.name,
             email: values.email,
+            mapleSyrup: values.mapleSyrup,
         };
          //send data to serverless function when checking out
          console.log(process.env.GATSBY_SERVERLESS_BASE);
