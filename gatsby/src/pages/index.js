@@ -19,15 +19,15 @@ function HotSlices() {
 
 export default function HomePage() {
 //using hook here
-    const result = useLatestData();
-    console.log(result)
+    const { slicemasters, hotSlices } = useLatestData();
+    
     return ( 
         <div className="center">
             <h1>The Best Pizza Downtown!</h1>
             <p>Open 11am to 11pm Every Day</p>
             <div>
-                <CurrentlySlicing />
-                <HotSlices />
+                <CurrentlySlicing slicemasters={slicemasters}/>
+                <HotSlices hotSlices={hotSlices}/>
             </div>
 
         </div>
