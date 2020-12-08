@@ -1,4 +1,5 @@
 import React from 'react';
+import useLatestData from '../utils/useLatestData';
 
 function CurrentlySlicing() {
     return (
@@ -17,6 +18,9 @@ function HotSlices() {
 }
 
 export default function HomePage() {
+//using hook here
+    const result = useLatestData();
+    console.log(result)
     return ( 
         <div className="center">
             <h1>The Best Pizza Downtown!</h1>
