@@ -2,9 +2,11 @@ import React from 'react';
 
 export default function HomePage() {
     return ( 
-        <>
-            <p> hey, I am the homepage</p>
-        </>
+        <div className="center">
+            <h1>The Best Pizza Downtown!</h1>
+            <p>Open 11am to 11pm</p>
+
+        </div>
     );
 }
 
