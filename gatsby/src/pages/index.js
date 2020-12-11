@@ -1,5 +1,5 @@
 import React from 'react';
-import HomePageGrid from '../styles/Grids';
+import { HomePageGrid } from '../styles/Grids';
 import useLatestData from '../utils/useLatestData';
 
 function CurrentlySlicing() {
