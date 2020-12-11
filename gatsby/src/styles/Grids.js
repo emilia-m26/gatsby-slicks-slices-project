@@ -13,3 +13,42 @@ export const ItemsGrid = styled.div`
     gap: 2rem;
     grid-template-columns: 1fr, 1fr;
 `;
+
+//single grid item (for homepage)
+export const ItemStyles = styled.div`
+    text-align: center;
+    position: relative;
+    img {
+        height: auto;
+        font-size: 0;
+    }
+    p {
+        transform: rotate(-2deg) translateY(-50%);
+        position: absolute;
+        width: 100%;
+        left: 0;
+    }
+    .mark {
+        display: inline;
+    }
+    @keyframes shine {
+        from {
+            background-position: 200%;
+        } 
+        to {
+            background-position: -40px;
+        }
+    }
+    img.loading {
+        --shine: white;
+        --background: var(--grey);
+        background-image: linear-gradient(
+            90deg, 
+            var(--background) 0px, 
+            var(--shine) 40px, 
+            var(--background) 80px
+        );
+        animation: shine 1s infinite linear;
+    }
+   
+`;
