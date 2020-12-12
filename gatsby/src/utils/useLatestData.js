@@ -20,9 +20,27 @@ export default function useLatestData() {
                             name
                             slicemasters {
                                 name
+                                _id
+                                image {
+                                    asset {
+                                        url
+                                        metadata {
+                                            lqip
+                                        }
+                                    }
+                                }
                             }
                             hotSlices {
                                 name
+                                _id
+                                image {
+                                    asset {
+                                        url
+                                        metadata {
+                                            lqip
+                                        }
+                                    }
+                                }
                             }
                         }
                     }
