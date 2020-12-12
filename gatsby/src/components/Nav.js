@@ -5,7 +5,7 @@ import Logo from './Logo';
 
 //only will apply to this component - scoped styles
 const NavStyles = styled.nav`
-    margin-bottom: 3rem;
+    //margin-bottom: 3rem;
     .logo {
         transform: translateY(-25%);
     }
