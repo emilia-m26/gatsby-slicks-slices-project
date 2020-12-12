@@ -1,10 +1,16 @@
 import React from'react';
-import { ItemsGrid } from '../styles/Grids';
+import { ItemsGrid, ItemStyles } from '../styles/Grids';
 
 export default function ItemGrid({ items }) {
     return (
         <ItemsGrid>
-           
+           {items.map((item) => (
+               <ItemStyles>
+                   <p>
+                       <span className="mark">{item.name}</span>
+                   </p>
+               </ItemStyles>
+           ))}
         </ItemsGrid>
     )
 }
