@@ -9,6 +9,7 @@ export default function ItemGrid({ items }) {
                    <p>
                        <span className="mark">{item.name}</span>
                    </p>
+                   <img src={`${item.image.asset.url}`} alt={item.name} />
                </ItemStyles>
            ))}
         </ItemsGrid>
